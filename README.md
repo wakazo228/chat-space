@@ -1,4 +1,4 @@
-#ChatSpaceのDB設計
+# ChatSpaceのDB設計
 
 ## groupsテーブル
 
