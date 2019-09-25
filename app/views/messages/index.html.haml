@@ -1,7 +1,43 @@
-.sidebar
-  .sidebar__header
-    test-user
-  .sidebar__groups
-    %ul.group-lists
-      %li.group-lists__group-list
+.flash-box
+  グループを作成しました。
+.wrapper
+  .chat-side
+    .side-header
+      .side-header__box
+        %p.side-header__box__user-name
+          test-user
+        %ul.side-header__box__menu
+          %li.side-header__box__menu__new-group
+            %a{href:""}
+              = fa_icon("edit")
+          %li.side-header__box__menu__edit-user
+            %a{href:""}
+              = fa_icon("cog")
+    .groups
+      = render(partial: "groups/group")
+  .chat-main
+    .main-header
+      .main-header__left-box
+        %h2.main-header__left-box__current-group
+          test-group
+        %ul.main-header__left-box__member-list
+          Member :
+          %li.main-header__left-box__member-list__member
+            test-user
+          %li.main-header__left-box__member-list__member
+            sample-user
+      %a{href:""}
+        .main-header__edit-btn
+          Edit
+    .messages
+      = render(partial: "message")
+    .form
+      %form.new-message
+        .input-box
+          %input.input-box__text{type: "text", name: "body", placeholder: "type a message"}
+          %label.input-box__image{for: "message-image"}
+            = fa_icon("image")
+            %input.input-box__image__file{type: "file", name: "image", id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"}
+        %input.bummit-btn{type: "submit", value: "Send"}
+
 
