@@ -3,31 +3,21 @@
   width: #{$side_width - 40px};
   padding: 0 20px;
 }
-@mixin main-area{
-  width: calc(100vw - #{$side_width + 80px});
-  padding: 0 40px;
-  margin-left: $side_width;
-}
 @mixin header{
   height: $header_height;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
 //お知らせ部分
-.flash-box{
+.info-box{
   width: 100%;
   color: $accent_white_color;
-  background-color: $accent_blue_color;
   text-align: center;
-  position: fixed;
-  top: 0;
-  z-index: 100;
+  &__text{
+    background-color: $accent_blue_color;
+  }
 }
 
 .wrapper{
-  display: flex;
   a{
     text-decoration: none;
   }
@@ -38,8 +28,8 @@
   width: $side_width;
   color: $accent_white_color;
   font-weight: bold;
-  position: fixed;
-
+  float: left;
+  height: 100%;
   a{
     color: $accent_white_color;
   }
@@ -72,9 +62,10 @@
 
   .groups{
     @include sidebar;
-    height: calc(100vh - #{$header_height});
+    height: calc(100vh - #{$header_height + 20px + 24px});
     background-color: #2F3E51;
-    padding-top: #{$header_height + 20px};
+    padding-top: 20px;
+    overflow: scroll;
 
     .group{
       &__group-name{
@@ -85,7 +76,7 @@
         margin-bottom: 40px;
         font-size: 11px;
       }
-  
+
     }
   }
 
@@ -94,129 +85,120 @@
 //メイン
 .chat-main{
   width: calc(100vw - #{$side_width});
-  padding-left: $side_width;
-}
+  float: left;
 
-.main-header{
-  @include main-area;
-  @include header;
-  margin-left: $side_width;
-  background-color: $accent_white_color;
-  border-bottom: #EEEEEE solid 1px;
-
-  &__left-box{
-    float: left;
+  .main-header{
+    @include header;
+    background-color: $accent_white_color;
+    border-bottom: #EEEEEE solid 1px;
+    padding: 0 40px;
+    overflow: scroll;
   
-    &__current-group{
-      font-size: 20px;
-      color: $chat_title_color;
-      margin-top: 35px;
-    }
-  
-    &__member-list{
-      // float: left;
-      margin-top: 15px;
-      font-size: 12px;
-      color: $chat_info_color;
-      display: flex;
-  
-      &__member{
-        margin-left: 0.3rem;
-  
-      }
-    }
-  }
-
-  &__edit-btn{
-    float: right;
-    height: 40px;
-    margin: 28px 0;
-    padding: 0 20px;
-    line-height: 40px;
-    border: $accent_blue_color solid 1px;
-    color: $accent_blue_color;
-  }
-}
-
-.messages{
-  @include main-area;
-  background-color: #fafafa;
-  height: calc(100vh - #{$header_height + $form_height});
-  padding-top: $header_height;
-  padding-bottom: $form_height;
-  margin-left: 0;
-  clear: both;
-
-    .message{
-      padding: 46px 0 40px;
-      color: $chat_main_color;
-      &__upper-info{
-        display: flex;
-        &__talker{
-          font-weight: bold;
-          font-size: 16px;
-        }
-        &__date{
-          margin-left: 10px;
-          color: $chat_info_color;
-          font-size: 12px;
-        }
+    &__left-box{
+      float: left;
     
+      &__current-group{
+        font-size: 20px;
+        color: $chat_title_color;
+        margin-top: 35px;
       }
-      &__text{
-        padding-top: 10px;
-        font-size: 14px;
-      }
-    }
-}
-
-
-.form{
-  @include main-area;
-  height: #{$form_height - 40px};
-  background-color: #dddddd;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
-  .new-message{
-    .input-box{
-      position: relative;
-      float: left;
-
-      &__text{
-        height: 50px;
-        width: calc(100vw - #{$side_width + 215px});
-        padding:0 10px;
-        font-size: 16px;
-        border: none;
-      }
-      &__image{
-        position: absolute;
-        right: 10px;
-        line-height: 50px;
-        cursor: pointer;
-        &__file{
-          display: none;
+    
+      &__member-list{
+        margin-top: 15px;
+        font-size: 12px;
+        color: $chat_info_color;
+        display: flex;
+    
+        &__member{
+          margin-left: 0.3rem;
+          &:first-child{
+            margin-left: 0;
+          }
         }
       }
     }
-    .bummit-btn{
-      height: 50px;
-      width: 100px;
-      padding: 0 30px;
-      margin-left: 15px;
-      line-height: 50px;
-      background-color: $accent_blue_color;
-      color: $accent_white_color;
-      float: left;
-      cursor: pointer;
-      &:after{
-        clear: both;
-      }
+  
+    &__edit-btn{
+      float: right;
+      height: 40px;
+      margin: 28px 0;
+      padding: 0 20px;
+      line-height: 40px;
+      border: $accent_blue_color solid 1px;
+      color: $accent_blue_color;
     }
   }
 
+  .messages{
+    clear: both;
+    background-color: #fafafa;
+    height: calc(100vh - #{$header_height + 1px + $form_height + 92px + 24px});
+    padding: 46px 40px;
+    overflow: scroll;
+
+      .message{
+        padding-bottom:40px;
+        color: $chat_main_color;
+        &__upper-info{
+          display: flex;
+          &__talker{
+            font-weight: bold;
+            font-size: 16px;
+          }
+          &__date{
+            margin-left: 10px;
+            color: $chat_info_color;
+            font-size: 12px;
+          }
+        }
+        &__text{
+          padding-top: 10px;
+          font-size: 14px;
+        }
+      }
+  }
+
+  .form{
+    height: #{$form_height - 40px};
+    background-color: #dddddd;
+    padding: 20px 40px;
+
+    .new-message{
+      .input-box{
+        position: relative;
+        float: left;
+  
+        &__text{
+          height: 50px;
+          width: calc(100vw - #{$side_width + 215px});
+          padding:0 10px;
+          font-size: 16px;
+          border: none;
+        }
+        &__image{
+          position: absolute;
+          right: 10px;
+          line-height: 50px;
+          cursor: pointer;
+          &__file{
+            display: none;
+          }
+        }
+      }
+      .bummit-btn{
+        height: 50px;
+        width: 100px;
+        padding: 0 30px;
+        margin-left: 15px;
+        line-height: 50px;
+        background-color: $accent_blue_color;
+        color: $accent_white_color;
+        float: left;
+        cursor: pointer;
+        &:after{
+          clear: both;
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
-.flash-box
-  グループを作成しました。
+.info-box
+  .info-box__text
+    グループを作成しました
 .wrapper
   .chat-side
     .side-header
@@ -21,7 +22,7 @@
         %h2.main-header__left-box__current-group
           test-group
         %ul.main-header__left-box__member-list
-          Member :
+          Member
           %li.main-header__left-box__member-list__member
             test-user
           %li.main-header__left-box__member-list__member
@@ -36,8 +37,6 @@
         .input-box
           %input.input-box__text{type: "text", name: "body", placeholder: "type a message"}
           %label.input-box__image{for: "message-image"}
-            = fa_icon("image")
+            = fa_icon("image lg")
             %input.input-box__image__file{type: "file", name: "image", id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"}
         %input.bummit-btn{type: "submit", value: "Send"}
-
-
