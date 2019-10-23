@@ -1,0 +1,204 @@
+//mixin
+@mixin sidebar{
+  width: #{$side_width - 40px};
+  padding: 0 20px;
+}
+@mixin header{
+  height: $header_height;
+}
+
+//お知らせ部分
+.info-box{
+  width: 100%;
+  color: $accent_white_color;
+  text-align: center;
+  &__text{
+    background-color: $accent_blue_color;
+  }
+}
+
+.wrapper{
+  a{
+    text-decoration: none;
+  }
+}
+
+//サイドバー
+.chat-side{
+  width: $side_width;
+  color: $accent_white_color;
+  font-weight: bold;
+  float: left;
+  height: 100%;
+  a{
+    color: $accent_white_color;
+  }
+
+  .side-header{
+    @include sidebar;
+    @include header;
+    background-color: #253141;
+    align-items: center;
+    display: flex;
+
+    &__box{
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+
+      &__user-name{
+        font-size: 16px;
+      }
+
+      &__menu{
+        display: flex;
+        li{
+          margin-left: 0.3rem;
+        }
+      }
+
+    }
+  }
+
+  .groups{
+    @include sidebar;
+    height: calc(100vh - #{$header_height + 20px + 24px});
+    background-color: #2F3E51;
+    padding-top: 20px;
+    overflow: scroll;
+
+    .group{
+      &__group-name{
+        margin-bottom: 5px;
+        font-size: 15px;
+      }
+      &__latest-message{
+        margin-bottom: 40px;
+        font-size: 11px;
+      }
+
+    }
+  }
+
+}
+
+//メイン
+.chat-main{
+  width: calc(100vw - #{$side_width});
+  float: left;
+
+  .main-header{
+    @include header;
+    background-color: $accent_white_color;
+    border-bottom: #EEEEEE solid 1px;
+    padding: 0 40px;
+    overflow: scroll;
+  
+    &__left-box{
+      float: left;
+    
+      &__current-group{
+        font-size: 20px;
+        color: $chat_title_color;
+        margin-top: 35px;
+      }
+    
+      &__member-list{
+        margin-top: 15px;
+        font-size: 12px;
+        color: $chat_info_color;
+        display: flex;
+    
+        &__member{
+          margin-left: 0.3rem;
+          &:first-child{
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  
+    &__edit-btn{
+      float: right;
+      height: 40px;
+      margin: 28px 0;
+      padding: 0 20px;
+      line-height: 40px;
+      border: $accent_blue_color solid 1px;
+      color: $accent_blue_color;
+    }
+  }
+
+  .messages{
+    clear: both;
+    background-color: #fafafa;
+    height: calc(100vh - #{$header_height + 1px + $form_height + 92px + 24px});
+    padding: 46px 40px;
+    overflow: scroll;
+
+      .message{
+        padding-bottom:40px;
+        color: $chat_main_color;
+        &__upper-info{
+          display: flex;
+          &__talker{
+            font-weight: bold;
+            font-size: 16px;
+          }
+          &__date{
+            margin-left: 10px;
+            color: $chat_info_color;
+            font-size: 12px;
+          }
+        }
+        &__text{
+          padding-top: 10px;
+          font-size: 14px;
+        }
+      }
+  }
+
+  .form{
+    height: #{$form_height - 40px};
+    background-color: #dddddd;
+    padding: 20px 40px;
+
+    .new-message{
+      .input-box{
+        position: relative;
+        float: left;
+  
+        &__text{
+          height: 50px;
+          width: calc(100vw - #{$side_width + 215px});
+          padding:0 10px;
+          font-size: 16px;
+          border: none;
+        }
+        &__image{
+          position: absolute;
+          right: 10px;
+          line-height: 50px;
+          cursor: pointer;
+          &__file{
+            display: none;
+          }
+        }
+      }
+      .bummit-btn{
+        height: 50px;
+        width: 100px;
+        padding: 0 30px;
+        margin-left: 15px;
+        line-height: 50px;
+        background-color: $accent_blue_color;
+        color: $accent_white_color;
+        float: left;
+        cursor: pointer;
+        &:after{
+          clear: both;
+        }
+      }
+    }
+  }
+}
