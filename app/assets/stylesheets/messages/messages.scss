@@ -7,16 +7,6 @@
   height: $header_height;
 }
 
-//お知らせ部分
-.info-box{
-  width: 100%;
-  color: $accent_white_color;
-  text-align: center;
-  &__text{
-    background-color: $accent_blue_color;
-  }
-}
-
 .wrapper{
   a{
     text-decoration: none;
@@ -37,7 +27,7 @@
   .side-header{
     @include sidebar;
     @include header;
-    background-color: #253141;
+    background-color: $side_blue_dark;
     align-items: center;
     display: flex;
 
@@ -62,8 +52,8 @@
 
   .groups{
     @include sidebar;
-    height: calc(100vh - #{$header_height + 20px + 24px});
-    background-color: #2F3E51;
+    height: calc(100vh - #{$header_height + 20px});
+    background-color: $side_blue_light;
     padding-top: 20px;
     overflow: scroll;
 
@@ -90,7 +80,7 @@
   .main-header{
     @include header;
     background-color: $accent_white_color;
-    border-bottom: #EEEEEE solid 1px;
+    border-bottom: $chat_main_mid_gray solid 1px;
     padding: 0 40px;
     overflow: scroll;
   
@@ -131,8 +121,8 @@
 
   .messages{
     clear: both;
-    background-color: #fafafa;
-    height: calc(100vh - #{$header_height + 1px + $form_height + 92px + 24px});
+    background-color: $chat_main_light_gary;
+    height: calc(100vh - #{$header_height + 1px + $form_height + 92px});
     padding: 46px 40px;
     overflow: scroll;
 
@@ -160,7 +150,7 @@
 
   .form{
     height: #{$form_height - 40px};
-    background-color: #dddddd;
+    background-color: $chat_main_dark_gray;
     padding: 20px 40px;
 
     .new-message{
@@ -185,7 +175,7 @@
           }
         }
       }
-      .bummit-btn{
+      .submmit-btn{
         height: 50px;
         width: 100px;
         padding: 0 30px;

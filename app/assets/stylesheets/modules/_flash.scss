@@ -1,0 +1,10 @@
+.info-box{
+  color: $accent_white_color;
+  text-align: center;
+  &__alert {
+    background-color:$accent_red_color;
+  }
+  &__notice {
+    background-color: $accent_blue_color;
+  }
+}
