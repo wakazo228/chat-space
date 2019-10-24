@@ -4,23 +4,37 @@
     .main-header
       .main-header__left-box
         %h2.main-header__left-box__current-group
-          test-group
+          = @group.name
         %ul.main-header__left-box__member-list
-          Member
-          %li.main-header__left-box__member-list__member
-            test-user
-          %li.main-header__left-box__member-list__member
-            sample-user
+          Member：
+          - @group.users.each do |user|
+            %li.main-header__left-box__member-list__member
+              = user.name
       = link_to edit_group_path(@group) do
         .main-header__edit-btn
           Edit
     .messages
-      = render(partial: "message")
+      = render @messages
+
     .form
-      %form.new-message
+      = form_for [@group, @message] do |f|
         .input-box
-          %input.input-box__text{type: "text", name: "body", placeholder: "type a message"}
-          %label.input-box__image{for: "message-image"}
+          = f.text_field :body, class: 'input-box__text', placeholder: "type a message"
+          = f.label :image, class: 'input-box__image' do
             = fa_icon("image lg")
-            %input.input-box__image__file{type: "file", name: "image", id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"}
-        %input.submmit-btn{type: "submit", value: "Send"}
+          = f.file_field :image, class: 'input-box__image_file', id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"
+          = f.submit 'Send', class: 'submit-btn'
+
+
+
+
+
+
+    -# .form
+    -#   %form.new-message
+    -#     .input-box
+    -#       %input.input-box__text{type: "text", name: "body", placeholder: "type a message"}
+    -#       %label.input-box__image{for: "message-image"}
+    -#         = fa_icon("image lg")
+    -#         %input.input-box__image__file{type: "file", name: "image", id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"}
+    -#     %input.submmit-btn{type: "submit", value: "Send"}
