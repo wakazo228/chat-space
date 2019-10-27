@@ -1,16 +1,11 @@
 .message
   .message__upper-info
     %p.message__upper-info__talker
-      test-user
+      = message.user.name
     %p.message__upper-info__date
-      2019/09/16(Mon) 10:30:01
+      = message.created_at.strftime('%y/%m/%d(%a) %H:%M')
   %p.message__text
-    こんにちは！！
-.message
-  .message__upper-info
-    %p.message__upper-info__talker
-      test-user
-    %p.message__upper-info__date
-      2019/09/16(Mon) 21:22:25
-  %p.message__text
-    さようなら。
+    - if message.body.present?
+      = message.body
+    - else
+      = image_tag message.image
