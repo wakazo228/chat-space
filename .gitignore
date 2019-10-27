@@ -18,4 +18,3 @@
 
 #.アップロードされた画像をコミットしないため
 public/uploads/*
-public/*

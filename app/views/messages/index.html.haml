@@ -22,19 +22,5 @@
           = f.text_field :body, class: 'input-box__text', placeholder: "type a message"
           = f.label :image, class: 'input-box__image' do
             = fa_icon("image lg")
-          = f.file_field :image, class: 'input-box__image_file', id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"
-          = f.submit 'Send', class: 'submit-btn'
-
-
-
-
-
-
-    -# .form
-    -#   %form.new-message
-    -#     .input-box
-    -#       %input.input-box__text{type: "text", name: "body", placeholder: "type a message"}
-    -#       %label.input-box__image{for: "message-image"}
-    -#         = fa_icon("image lg")
-    -#         %input.input-box__image__file{type: "file", name: "image", id: "message-image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"}
-    -#     %input.submmit-btn{type: "submit", value: "Send"}
+          = f.file_field :image, class: 'input-box__image__file', id: "message_image", accept: ".jpg,.gif,.png,image/gif,image/jpeg,image/png"
+        = f.submit 'Send', class: 'submit-btn'
